@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="#article/1">文章1</a>
+    <a href="#article/2">文章2</a>
+    <div id="page-wrap"></div>
+    <script>
+        var pageElem = document.getElementById("page-wrap");
+
+        function handleRoute(newURL) {
+            if (newURL.indexOf('article/1') > 0) {
+                pageElem.innerHTML = "<h1>第一篇文章</h1><p>这篇文章没有什么东西</p>"
+            } else if (newURL.indexOf('article/2') > 0) {
+                pageElem.innerHTML = "<h1>第二篇文章</h1><p>这篇文章没有讲什么内容</p>"
+            } else {
+                alert("404!该页面无法找到")
+            }
+        }
+
+        window.addEventListener("hashchange", function(e) {
+            handleRoute(e.newURL)
+        })
+        handleRoute(location.href)
+    </script>
+</body>
+
+</html>
